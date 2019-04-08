@@ -2,24 +2,23 @@
 const canvas = document.querySelector('.canvas')
 const clearButton = document.querySelector('.clear')
 const shapes = document.querySelector('.shapes')
+const colorInput = document.querySelector('.color')
 
 let isDrawing = false
 let shape = 'circleOption'
+let color = 'black'
 
 // Event Listeners
 canvas.addEventListener('mousedown', e => {
-  console.log('Drawing')
   isDrawing = true
   paintSpot(e.pageX, e.pageY)
 })
 
 canvas.addEventListener('mouseup', () => {
-  console.log('Not Drawing')
   isDrawing = false
 })
 
 canvas.addEventListener('mouseleave', () => {
-  console.log('Not Drawing')
   isDrawing = false
 })
 
@@ -37,12 +36,17 @@ shapes.addEventListener('click', e => {
   }
 })
 
+colorInput.addEventListener('change', e => {
+  console.log(e.target.value)
+  color = e.target.value
+})
+
 //Functions
 function paintSpot(x, y) {
   const spot = document.createElement('div')
   spot.className = `spot ${shape}`
   spot.style.left = `${x - 22}px`
   spot.style.top = `${y - 22}px`
-  spot.style.background = 'lightblue'
+  spot.style.background = color
   canvas.appendChild(spot)
 }
