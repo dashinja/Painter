@@ -37,9 +37,7 @@ shapes.addEventListener('click', e => {
 })
 
 colorInput.addEventListener('change', e => {
-  console.log(e.target.value)
   color = e.target.value
-
   for (let shape of shapes.children) {
     shape.style.background = color
   }
